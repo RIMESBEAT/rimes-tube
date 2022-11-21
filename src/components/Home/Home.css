@@ -1,0 +1,32 @@
+.home__container{
+    display: flex;
+    width: 100%;
+    padding: 1.5rem;
+    border: 2px solid orange;
+    
+
+}
+.aside__icons__conatainer{
+    display: flex;
+    flex-direction: column;
+}
+.aside__text__conatainer{
+    width: 15em;
+    display: flex;
+    flex-direction: column;
+}
+.aside__container{
+    display: flex;
+    border: 2px solid yellow;
+    gap: 1rem;
+}
+.aside__icon{
+    display: flex;
+}
+.aside__icon:hover{
+    background: var(--gray);
+}
+.aside__icon img{
+  width: 1.5em;
+  
+} 

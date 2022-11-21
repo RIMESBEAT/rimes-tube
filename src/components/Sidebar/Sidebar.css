@@ -1,0 +1,21 @@
+.sidebar__container{
+    width: 10em;
+    background: var(--gray);
+    overflow-y: scroll;
+    height: 100vh;
+}
+.sidebar__items{
+    display: flex;
+    flex-direction: column;
+     margin-top: 1rem;
+     list-style: none;
+}
+
+.sidebar__items a{
+    font-size: .8rem;
+    
+   
+}
+li img{
+    width: 1.3em;
+}

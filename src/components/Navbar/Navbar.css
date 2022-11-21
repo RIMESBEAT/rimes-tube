@@ -1,0 +1,97 @@
+
+.nav__container{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 3rem;
+    align-items: center;
+
+}
+.side__bar__burger{
+    color: var(--black);
+    margin-right: 1rem;
+    font-size: 1.3rem;
+}
+.search__box{
+    background: var(--gray);
+    align-items: center;
+    display: inline-block; 
+    width: 100%;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--red);
+}
+.fa-youtube{
+    color: var(--red);
+    font-size: 1.5rem;
+}
+.search__input{
+    padding: .7rem;
+    outline: none;
+    width: 40em;
+    
+}
+.search__icon{
+    padding: .7rem;
+    cursor: pointer;
+}
+.search__bar__nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.mic{
+    background: var(--gray);
+    border-radius: 50px;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.user__icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+}
+.user__icon i{
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.user__icon__toggle{
+    position: absolute;
+    right: 3rem;
+    top: 0;
+    width: 20em;
+    background: var(--white);
+    box-shadow: 1px 4px 8px;
+    padding: .5rem;
+    display: none;
+}
+.user__icon__toggle.active{
+    display: block;
+}
+.toggle__header{
+    gap: 1rem;
+    display: flex;
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray);
+}
+.toggle__account__container{
+    overflow-y: scroll;
+    height: 82vh;
+}                     
+.toggle__account__content{
+    
+    border-bottom: 1px solid var(--gray);
+    padding: 1rem ;
+    line-height: 2rem;
+    margin:  0;
+}
