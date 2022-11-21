@@ -23,7 +23,7 @@ function Navbar() {
   };
 
   const movieOrderHandler = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     setOrder(e.target.value);
   };
   const movieHandler = (e) => {

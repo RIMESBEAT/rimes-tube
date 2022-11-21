@@ -8,7 +8,7 @@ function Home() {
   return (
     <div className="home__container">
       <Sidebar/>
-<Movies/>
+{/* <Movies/> */}
       <MovieCard />
     </div>
   );
