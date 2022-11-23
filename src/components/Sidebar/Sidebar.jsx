@@ -8,7 +8,7 @@ import Library from "../../assets/vid-library.png"
 function Sidebar() {
   return (
     <div>
-      <nav className="sidebar__container">
+      {/* <nav className="sidebar__container">
         <div className="nav__details">
           <ul className="sidebar__list">
             <li className="sidebar__items">
@@ -29,7 +29,7 @@ function Sidebar() {
             </li>
           </ul>
         </div>
-      </nav>
+      </nav> */}
       <Outlet />
     </div>
   );

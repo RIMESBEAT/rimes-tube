@@ -58,6 +58,7 @@ function Navbar() {
                 <MenuItem value="ebony">Ebony</MenuItem>
                 <MenuItem value="bdsm">BDSM</MenuItem>
                 <MenuItem value="gay">Gay</MenuItem>
+                <MenuItem value="ebony lesbian">Gay</MenuItem>
                 <MenuItem value="shemale">She Male</MenuItem>
               </Select>
             </FormControl>
