@@ -58,7 +58,7 @@ function Navbar() {
                 <MenuItem value="ebony">Ebony</MenuItem>
                 <MenuItem value="bdsm">BDSM</MenuItem>
                 <MenuItem value="gay">Gay</MenuItem>
-                <MenuItem value="ebony lesbian">Gay</MenuItem>
+                <MenuItem value="ebony lesbian">Ebony Lesbian</MenuItem>
                 <MenuItem value="shemale">She Male</MenuItem>
               </Select>
             </FormControl>
@@ -76,7 +76,7 @@ function Navbar() {
                 <MenuItem value="top-rated">Top-rated</MenuItem>
               </Select>
             </FormControl>
-      
+
             <i className="fa-solid fa-magnifying-glass search__icon"></i>
             <div className="mic">
               <i className="fa-solid fa-microphone"></i>
