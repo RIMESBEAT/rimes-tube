@@ -54,7 +54,6 @@ function Navbar() {
                 value={selectMovies}
                 // label="Age"
                 onChange={movieHandler}
-           
 
                 // sx={{ display: "flex", flexWrap: "wrap" }}
               >
@@ -67,6 +66,7 @@ function Navbar() {
                 <MenuItem value="mom">Mom</MenuItem>
                 <MenuItem value="family">Family</MenuItem>
                 <MenuItem value="shemale">She Male</MenuItem>
+                <MenuItem value="doggystyle">doggy</MenuItem>
               </Select>
             </FormControl>
             <FormControl fullWidth>
@@ -81,6 +81,7 @@ function Navbar() {
                 <MenuItem value="longest">Longest</MenuItem>
                 <MenuItem value="shortest">Shortest</MenuItem>
                 <MenuItem value="top-rated">Top-rated</MenuItem>
+                <MenuItem value="most-rated">Most-rated</MenuItem>
               </Select>
             </FormControl>
 

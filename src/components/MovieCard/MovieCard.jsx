@@ -28,7 +28,7 @@ function MovieCard() {
   const movieFetchBox = async () => {
     setIsLoading(true);
     await fetch(
-      `https://www.eporner.com/api/v2/video/search/?query=${selectMovies}&per_page=1000&page=80&thumbsize=big&order=${moviesOrder}&gay=1&lq=1&format=json`
+      `https://www.eporner.com/api/v2/video/search/?query=${selectMovies}&per_page=10000&page=80&thumbsize=big&order=${moviesOrder}&gay=1&lq=1&format=json`
     )
       .then((res) => res.json())
       .then((data) => setMovieItem(data));
