@@ -11,7 +11,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} exact />
-          <Route path="/playbox" element={<PlayBox />} exact />
+          <Route path="/playbox/:id" element={<PlayBox />} exact />
         </Routes>
       </main>
     </div>

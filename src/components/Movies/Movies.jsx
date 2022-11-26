@@ -1,45 +1,61 @@
 import React from "react";
 
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-// import { CardMedia } from "@mui/material";
+
 import "./Movies.css";
-import { Link, useNavigate } from "react-router-dom";
-import PlayBox from "../PlayBox/PlayBox";
-import ReactPlayer from "react-player";
 
-function Movies({
-  title,
-  added,
-  default_thumb,
-  id,
-  url,
-  views,
-  embed,
-  length_min,
-}) {
-  const navigate = useNavigate();
+import { Box, Modal } from "@mui/material";
 
+function Movies({ title, added, default_thumb, id, views, embed, length_min }) {
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "60%",
+    height: "100%",
+    bgcolor: "transparent",
+    boxShadow: 24,
+    p: 4,
+  };
 
-
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <div className="" key={id}>
       <Card sx={{ maxWidth: 345, margin: "auto" }}>
-        {/* <Link to={embed}> */}
         <CardMedia
           component="img"
           alt={title}
           height="180px"
           image={default_thumb.src}
-          // onClick={gotoEmbedHandler}
+          onClick={handleOpen}
         />
-        {/* <iframe src={embed} controls poster={default_thumb.src} /> */}
-        {/* </Link> */}
-        {/* <ReactPlayer url={embed} controls /> */}
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style} id="modal-modal-title">
+            <iframe
+              frameborder="2"
+              allowfullscreen=""
+              webkitallowfullscreen="true"
+              mozallowfullscreen="true"
+              oallowfullscreen="true"
+              msallowfullscreen="true"
+              title={title}
+              src={embed}
+              width="90%"
+              height="90%"
+            ></iframe>
+          </Box>
+        </Modal>
         <CardContent>
           <Typography
             gutterBottom
@@ -61,10 +77,6 @@ function Movies({
             Duration: {length_min}
           </Typography>
         </CardContent>
-        {/* <CardActions>
-          <Button size="small">Share</Button>
-          <Button size="small">Learn More</Button>
-        </CardActions> */}
       </Card>
     </div>
   );

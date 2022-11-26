@@ -10,14 +10,16 @@ import {
   MenuItem,
   Select,
   styled,
+  withStyles,
 } from "@mui/material";
 import { useContext } from "react";
 import { MovieContext } from "../Context/MovieContext";
+import Searchbox from "../Searchbox/Searchbox";
 
 function Navbar() {
   const [navDropDown, setNavDropDown] = useState(false);
 
-  const { movies, setMovies, moviesOrder, setOrder } = useContext(MovieContext);
+  const { selectMovies, setSelectMovies, moviesOrder, setOrder } = useContext(MovieContext);
   const navDropDownHandler = () => {
     setNavDropDown(!navDropDown);
   };
@@ -27,8 +29,8 @@ function Navbar() {
     setOrder(e.target.value);
   };
   const movieHandler = (e) => {
-    e.preventDefault();
-    setMovies(e.target.value);
+    // e.preventDefault();
+    setSelectMovies(e.target.value);
   };
 
 
@@ -44,21 +46,26 @@ function Navbar() {
             RimesTube
           </div>
           <div className="search__bar__nav">
+            <Searchbox />
             <FormControl fullWidth>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={movies}
-                label="Age"
+                value={selectMovies}
+                // label="Age"
                 onChange={movieHandler}
+           
+
+                // sx={{ display: "flex", flexWrap: "wrap" }}
               >
                 <MenuItem value="all">All</MenuItem>
                 <MenuItem value="teen">Teen</MenuItem>
-                <MenuItem value="lesbian">Lesbian</MenuItem>
+                <MenuItem value="lesbians">Lesbian</MenuItem>
                 <MenuItem value="ebony">Ebony</MenuItem>
                 <MenuItem value="bdsm">BDSM</MenuItem>
                 <MenuItem value="gay">Gay</MenuItem>
-                <MenuItem value="ebony lesbian">Ebony Lesbian</MenuItem>
+                <MenuItem value="mom">Mom</MenuItem>
+                <MenuItem value="family">Family</MenuItem>
                 <MenuItem value="shemale">She Male</MenuItem>
               </Select>
             </FormControl>
