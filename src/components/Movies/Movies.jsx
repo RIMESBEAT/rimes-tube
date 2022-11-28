@@ -52,7 +52,7 @@ function Movies({ title, added, default_thumb, id, views, embed, length_min }) {
               title={title}
               src={embed}
               width="100%"
-              height="100%"
+              // height="1%"
             ></iframe>
           </Box>
         </Modal>
