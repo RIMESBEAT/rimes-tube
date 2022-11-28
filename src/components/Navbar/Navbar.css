@@ -4,7 +4,7 @@
     padding: 10px 3rem;
     align-items: center;
     position: relative;
-    overflow-x: hidden;
+    
     
 
 }
@@ -73,11 +73,13 @@
     position: absolute;
     z-index: 4;
     top: 2em;
-    right: -500px;
+    right: -400px;
     background: var(--red);
     width: 70%;
     transition: .3s ease-in-out;
     z-index: 10;
+   
+
 
    }
     .nav__items.active {
