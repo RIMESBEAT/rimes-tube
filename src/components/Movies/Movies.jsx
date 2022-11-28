@@ -15,11 +15,11 @@ function Movies({ title, added, default_thumb, id, views, embed, length_min }) {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "60%",
-    height: "100%",
+    width: "70%",
+    height: "70%",
     bgcolor: "transparent",
     boxShadow: 24,
-    p: 4,
+    p: 0,
   };
 
   const [open, setOpen] = React.useState(false);
@@ -51,8 +51,8 @@ function Movies({ title, added, default_thumb, id, views, embed, length_min }) {
               msallowfullscreen="true"
               title={title}
               src={embed}
-              width="90%"
-              height="90%"
+              width="100%"
+              height="100%"
             ></iframe>
           </Box>
         </Modal>
@@ -69,7 +69,16 @@ function Movies({ title, added, default_thumb, id, views, embed, length_min }) {
           >
             {title}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{
+              display: "block",
+              whiteSpace: "nowrap",
+            }}
+            textOverflow="ellipsis"
+            overflow="hidden"
+          >
             Views: {views} &bull; Added: {added.slice(0, 10)}
           </Typography>
 

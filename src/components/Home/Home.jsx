@@ -9,7 +9,7 @@ function Home() {
   return (
     <>
        <Sidebar />
-      {/* <VideoFilter /> */}
+      <VideoFilter />
       <div className="home__container">
      
 

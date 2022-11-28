@@ -1,22 +1,22 @@
-
 .nav__container{
     display: flex;
     justify-content: space-between;
     padding: 10px 3rem;
     align-items: center;
+    position: relative;
 
+}
+.toggle__icons{
+    position: absolute;
+
+    display: none;
 }
 .side__bar__burger{
     color: var(--black);
     margin-right: 1rem;
     font-size: 1.3rem;
 }
-.search__box{
-    background: var(--gray);
-    align-items: center;
-    display: inline-block; 
-    width: 100%;
-}
+
 .logo{
     display: flex;
     align-items: center;
@@ -24,36 +24,7 @@
     font-weight: bold;
     color: var(--red);
 }
-.fa-youtube{
-    color: var(--red);
-    font-size: 1.5rem;
-}
-.search__input{
-    padding: .7rem;
-    outline: none;
-    width: 40em;
-    
-}
-.search__icon{
-    padding: .7rem;
-    cursor: pointer;
-}
-.search__bar__nav{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-}
-.mic{
-    background: var(--gray);
-    border-radius: 50px;
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
+
 .user__icon{
     display: flex;
     align-items: center;
@@ -78,20 +49,53 @@
 .user__icon__toggle.active{
     display: block;
 }
-.toggle__header{
-    gap: 1rem;
-    display: flex;
-    padding: 1rem;
-    border-bottom: 1px solid var(--gray);
-}
+
 .toggle__account__container{
     overflow-y: scroll;
     height: 82vh;
 }                     
-.toggle__account__content{
-    
-    border-bottom: 1px solid var(--gray);
-    padding: 1rem ;
-    line-height: 2rem;
-    margin:  0;
+
+.navbar__toggle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
 }
+
+
+
+@media(max-width: 800px){
+
+   .nav__items{
+    height: 100vh;
+    position: absolute;
+    z-index: 4;
+    top: 2em;
+    right: -500px;
+    background: var(--red);
+    width: 70%;
+    transition: .3s ease-in-out;
+
+   }
+    .nav__items.active {
+         right: 0;
+    }
+    .navbar__toggle{
+
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+        margin-left: 2rem;
+        margin-top: 30%;
+
+    }
+
+    .toggle__icons{
+    position: absolute;
+    left: 1rem;
+    top: .5rem;
+    display: block; 
+    }
+
+}
+

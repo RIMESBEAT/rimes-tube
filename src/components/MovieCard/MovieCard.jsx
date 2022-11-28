@@ -4,12 +4,10 @@ import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { MovieContext } from "../Context/MovieContext";
 import CircularProgress from "@mui/material/CircularProgress";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
+
 import Movies from "../Movies/Movies";
 import ReactPaginate from "react-paginate";
 import "./MovieCard.css";
-import { useNavigate } from "react-router-dom";
 
 function MovieCard() {
   const [movieItem, setMovieItem] = useState([]);
@@ -19,16 +17,14 @@ function MovieCard() {
   const [searchMovies, setSearchMovies] = useState();
   const moviesPerPage = 10;
   const pagesVisited = page * moviesPerPage;
-  const navigate = useNavigate();
 
-  // const gotoVideoHandler = () => {
-  //   navigate(`/playbox/${movieItem.videos.id}`)
-  // }
+
+  
 
   const movieFetchBox = async () => {
     setIsLoading(true);
     await fetch(
-      `https://www.eporner.com/api/v2/video/search/?query=${selectMovies}&per_page=10000&page=80&thumbsize=big&order=${moviesOrder}&gay=1&lq=1&format=json`
+      `https://www.eporner.com/api/v2/video/search/?query=${selectMovies}&per_page=10000&page=80&thumbsize=big&order=${moviesOrder}&gay=0&lq=1&format=json`
     )
       .then((res) => res.json())
       .then((data) => setMovieItem(data));
@@ -37,7 +33,7 @@ function MovieCard() {
   useEffect(() => {
     movieFetchBox();
   }, [selectMovies, moviesOrder]);
-  console.log(movieItem);
+  console.log(movieItem.videos);
   // const { id, title } = movieItem.videos;
   // const [pages, setPages] = useState(moviesOrder)
   const pageCount = Math.ceil(movieItem.page);
@@ -72,13 +68,7 @@ function MovieCard() {
         <div className="movie__display">
           {isLoading ? <CircularProgress color="secondary" /> : displayMovies}
         </div>
-        {/* <div className=""> */}
-        {/* </div> */}
-        {/* {movieItem.videos &&
-          movieItem.videos.map((movies) => (
-            <Movies {...movies} key={movies.id} />
-          ))} */}
-
+    
         <ReactPaginate
           previousLabel={"Previous"}
           nextLabel={"Next"}
