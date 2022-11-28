@@ -4,6 +4,7 @@
     padding: 10px 3rem;
     align-items: center;
     position: relative;
+    overflow-x: hidden;
 
 }
 .toggle__icons{
