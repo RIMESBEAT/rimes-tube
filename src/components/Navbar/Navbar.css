@@ -5,6 +5,7 @@
     align-items: center;
     position: relative;
     overflow-x: hidden;
+    z-index: 10;
 
 }
 .toggle__icons{
