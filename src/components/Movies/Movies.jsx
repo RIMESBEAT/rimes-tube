@@ -8,8 +8,23 @@ import Typography from "@mui/material/Typography";
 import "./Movies.css";
 
 import { Box, Modal } from "@mui/material";
+import { BlurLinear } from "@mui/icons-material";
 
-function Movies({ title, added, default_thumb, id, views, embed, length_min }) {
+function Movies({
+  embed_code,
+  categories,
+  main_thumbnail,
+  preview_url,
+  title,
+  description,
+  website_link,
+  id,
+  duration,
+  publish_date,
+}) {
+ let time = duration
+  const minutes = Math.floor(time / 60);
+  const seconds = time - minutes * 60;
   const style = {
     position: "absolute",
     top: "50%",
@@ -32,7 +47,7 @@ function Movies({ title, added, default_thumb, id, views, embed, length_min }) {
           component="img"
           alt={title}
           height="180px"
-          image={default_thumb.src}
+          image={main_thumbnail}
           onClick={handleOpen}
         />
         <Modal
@@ -50,9 +65,10 @@ function Movies({ title, added, default_thumb, id, views, embed, length_min }) {
               oallowfullscreen="true"
               msallowfullscreen="true"
               title={title}
-              src={embed}
+              src={embed_code}
               width="100%"
-              // height="1%"
+              height="100%"
+              value="1514958996"
             ></iframe>
           </Box>
         </Modal>
@@ -79,11 +95,11 @@ function Movies({ title, added, default_thumb, id, views, embed, length_min }) {
             textOverflow="ellipsis"
             overflow="hidden"
           >
-            Views: {views} &bull; Added: {added.slice(0, 10)}
+            {categories}
           </Typography>
 
           <Typography variant="body2" color="text.secondary">
-            Duration: {length_min}
+            Duration: {minutes} : {seconds} mins
           </Typography>
         </CardContent>
       </Card>
