@@ -13,37 +13,37 @@ function Navbar() {
   const [navDropDown, setNavDropDown] = useState(false);
   const [navOpen, setNavOpen] = useState();
 
-  const navBarHandler = () => {
-    setNavOpen(!navOpen);
-  };
-  const { selectMovies, setSelectMovies, moviesOrder, setOrder } =
-    useContext(MovieContext);
-  const navDropDownHandler = () => {
-    setNavDropDown(!navDropDown);
-  };
+  // const navBarHandler = () => {
+  //   setNavOpen(!navOpen);
+  // };
+  // const { selectMovies, setSelectMovies, moviesOrder, setOrder } =
+  //   useContext(MovieContext);
+  // const navDropDownHandler = () => {
+  //   setNavDropDown(!navDropDown);
+  // };
 
-  const movieOrderHandler = (e) => {
-    e.preventDefault();
-    setOrder(e.target.value);
-  };
-  const movieHandler = (e) => {
-    e.preventDefault();
-    setSelectMovies(e.target.value);
-  };
+  // const movieOrderHandler = (e) => {
+  //   e.preventDefault();
+  //   setOrder(e.target.value);
+  // };
+  // const movieHandler = (e) => {
+  //   e.preventDefault();
+  //   setSelectMovies(e.target.value);
+  // };
 
   return (
     <div>
       <nav>
         <div className="nav__container">
-          <div className="toggle__icons" onClick={navBarHandler}>
+          {/* <div className="toggle__icons" onClick={navBarHandler}>
             {navOpen ? <ClearIcon /> : <MenuIcon />}
-          </div>
+          </div> */}
           <div className="logo">
             <i className="fa-brands fa-youtube"></i>
             RimesTube
           </div>
 
-          <div className={navOpen ? "nav__items active" : "nav__items"}>
+          {/* <div className={navOpen ? "nav__items active" : "nav__items"}>
             <div className="navbar__toggle sm-hidden">
               <Searchbox />
               <FormControl sx={{ m: 0.5, minWidth: 80 }} size="small">
@@ -92,8 +92,8 @@ function Navbar() {
                       ? "user__icon__toggle active"
                       : "user__icon__toggle"
                   }
-                >
-                  <header className="toggle__header">
+                > */}
+
                     <Avatar
                       bordered
                       color="secondary"
@@ -101,12 +101,8 @@ function Navbar() {
                       src={UserImage}
                       css={{ cursor: "pointer" }}
                     />
-                    <div className="toggle__content">
-                      <h2>Rimes Beat</h2>
-                      <h4>Manage RimesTube Account</h4>
-                    </div>
-                  </header>
-                  <section className="toggle__account__container">
+               
+                  {/* <section className="toggle__account__container">
                     <ul className="toggle__account__content">
                       <li>Your channel</li>
                       <li>RimesTube Studio</li>
@@ -135,7 +131,7 @@ function Navbar() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </nav>
     </div>

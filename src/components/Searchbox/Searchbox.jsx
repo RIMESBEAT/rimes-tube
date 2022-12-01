@@ -3,19 +3,23 @@ import SearchIcon from "@mui/icons-material/Search";
 import axios from 'axios';
 import { useState } from 'react';
 
-const Searchbox = ({setMovieItem}) => {
-  const [searchMovies, setSearchMovies] = useState();
+const Searchbox = ({ movieItem, setSearchResult }) => {
+  // const [searchMovies, setSearchMovies] = useState();
 
-    const handleSearch = async (e) => {
-      e.preventDefault();
-      return await axios
-        .get(`http://localhost:5000/videos?q=${searchMovies}`)
-        .then((response) => {
-          setMovieItem(response.data);
-          setSearchMovies("");
-        })
-        .catch((err) => console.log(err));
-    };
+  const handleSearch = async (e) => e.preventDefault();
+
+  const handleSearchChange = (e) => {
+    if (!e.target.value) return setSearchResult(movieItem);
+    const resultsArray =
+      movieItem &&
+      movieItem.filter(
+        (movieItem) =>
+          movieItem.title.toLowerCase().includes(e.target.value) &&
+          movieItem.categories.toLowerCase().includes(e.target.value) 
+          
+      )
+    setSearchResult(resultsArray)
+  };
   return (
     <Paper
       onSubmit={handleSearch}
@@ -27,8 +31,8 @@ const Searchbox = ({setMovieItem}) => {
         sx={{ ml: 0.5, flex: 1 }}
         placeholder="Search Porn Here"
         inputProps={{ "aria-label": "search google maps" }}
-        value={searchMovies}
-        onChange={(e)=>setSearchMovies(e.target.value)}
+        // value={searchMovies}
+        onChange={handleSearchChange}
       />
       <IconButton type="button" sx={{ p: "10px" }}></IconButton>
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
