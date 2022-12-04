@@ -2,8 +2,9 @@ import { Divider, IconButton, InputBase, Paper } from '@mui/material';
 import SearchIcon from "@mui/icons-material/Search";
 import axios from 'axios';
 import { useState } from 'react';
+import { Description } from '@mui/icons-material';
 
-const Searchbox = ({ movieItem, setSearchResult }) => {
+const Searchbox = ({ movieItem, setSearchResult, searchResult }) => {
   // const [searchMovies, setSearchMovies] = useState();
 
   const handleSearch = async (e) => e.preventDefault();
@@ -13,13 +14,17 @@ const Searchbox = ({ movieItem, setSearchResult }) => {
     const resultsArray =
       movieItem &&
       movieItem.filter(
-        (movieItem) =>
-          movieItem.title.toLowerCase().includes(e.target.value) &&
-          movieItem.categories.toLowerCase().includes(e.target.value) 
-          
+        ({ title, description, categories }) =>
+          description.toUpperCase().includes(e.target.value.toUpperCase()) ||
+          title.toUpperCase().includes(e.target.value.toUpperCase())
       )
-    setSearchResult(resultsArray)
+    
+    setSearchResult(resultsArray);
   };
+
+  
+
+  // console.log(movieItem.data.categories);
   return (
     <Paper
       onSubmit={handleSearch}
@@ -31,7 +36,7 @@ const Searchbox = ({ movieItem, setSearchResult }) => {
         sx={{ ml: 0.5, flex: 1 }}
         placeholder="Search Porn Here"
         inputProps={{ "aria-label": "search google maps" }}
-        // value={searchMovies}
+        
         onChange={handleSearchChange}
       />
       <IconButton type="button" sx={{ p: "10px" }}></IconButton>

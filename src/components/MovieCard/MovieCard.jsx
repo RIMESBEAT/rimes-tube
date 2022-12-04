@@ -22,35 +22,28 @@ function MovieCard() {
   const moviesPerPage = 30;
   const pagesVisited = page * moviesPerPage;
 
-  
+  useEffect(() => {
+    // loadMovieData();
 
-  // useEffect(() => {
-  //   // loadMovieData();
-
-  //   getMovies().then(data => {
-  //     setMovieItem(data)
-  //     return data
-  //   }).then(data => {
-  //     setSearchResult(data)
-  //   })
-  // }, []);
-
-  const sortMovies = [
-    "categories",
-    "description",
-    "title",
-    "duration",
-    "lesbian",
-  ];
+    getMovies()
+      .then((data) => {
+        setMovieItem(data);
+        return data;
+      })
+      .then((data) => {
+        setSearchResult(data);
+      });
+  }, []);
 
   const loadMovieData = async () => {
-    // return await axios
-    //   .get("http://localhost:5000/videos")
-    //   .then((response) => setMovieItem(response.data))
-    //   .catch((err) => console.log(err));
+    return await axios
+      .get(
+        "https://hdzog.com/admin/feeds/promo/?categories=lesbian&only_hd=on&feed_format=csv&screenshot_format=source&limit=90000&csv_separator=%7C"
+      )
+      .then((response) => setMovieItem(response.data))
+      .catch((err) => console.log(err));
   };
-
-
+  console.log(movieItem);
   const handleSearch = async (e) => {
     e.preventDefault();
     // return await axios
@@ -58,9 +51,9 @@ function MovieCard() {
     //   .then((response) => {
     //     setMovieItem(response.data);
     //     setSearchMovies("");
-        
-      // })
-      // .catch((err) => console.log(err));
+
+    // })
+    // .catch((err) => console.log(err));
   };
 
   const handleSort = async (e) => {
@@ -83,8 +76,6 @@ function MovieCard() {
   //       <Movies {...movies} setSearchResult={setSearchResult} key={movies.id} />
   //     ));
 
-
- 
   const pagesHandler = (e, k) => {
     setPage(k);
   };

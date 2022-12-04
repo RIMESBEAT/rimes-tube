@@ -7,4 +7,5 @@ export const api = axios.create({
 export const getMovies = async () => {
     const response = await api.get("/videos")
     return response.data
- }
+}
+ 

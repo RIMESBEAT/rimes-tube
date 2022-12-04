@@ -62,7 +62,7 @@ function Movies({
               allowfullscreen=""
               webkitallowfullscreen="true"
               mozallowfullscreen="true"
-              oallowfullscreen="true"
+              oallowFullScreen="true"
               msallowfullscreen="true"
               title={title}
               src={embed_code}
