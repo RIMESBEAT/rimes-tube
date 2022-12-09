@@ -3,7 +3,7 @@ import BannerImage from "../../assets/header_banner_mobile.jpg"
 
 const Banner = () => {
     return (
-      <>
+      <div className='banner__container'>
     <head>
       <script
         async
@@ -19,7 +19,7 @@ const Banner = () => {
                 width: "100%", height: "100%", objectFit: "cover", objectPosition: "bottom"
             }} />
             </div>
-      </>
+      </div>
   );
 }
 

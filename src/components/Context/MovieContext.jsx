@@ -6,6 +6,8 @@ export const MovieContext = createContext({
   selectMovies: "all",
   setOrder: () => null,
   moviesOrder: "latest",
+  setSearchMoviesResult: () => null,
+  searchMoviesResult: " ",
 });
 
 export const MOVIES_ACTION_TYPE = {
@@ -13,6 +15,9 @@ export const MOVIES_ACTION_TYPE = {
 };
 export const MOVIES_ORDERS_ACTION_TYPE = {
   SET_MOVIES_ORDER: "SET_MOVIES_ORDER",
+};
+export const MOVIES_SEARCH_ACTION_TYPE = {
+  SET_MOVIES_SEARCH: "SET_MOVIES_SEARCH",
 };
 
 export const MoviesReducer = (state, action) => {
@@ -28,6 +33,12 @@ export const MoviesReducer = (state, action) => {
         ...state,
         moviesOrder: payload,
       };
+    case MOVIES_SEARCH_ACTION_TYPE.SET_MOVIES_SEARCH:
+      return {
+        ...state,
+        searchMoviesResult: payload,
+      };
+
     default:
       throw new Error(`unhandled error${type} in moviesReducer`);
   }
@@ -39,6 +50,9 @@ const INITIAL_MOVIE_STATE = {
 const INITIAL_MOVIE_ORDER_STATE = {
   moviesOrder: "latest",
 };
+const INITIAL_SEARCH_STATE = {
+  searchMoviesResult: " ",
+};
 
 export const MovieProvider = ({ children }) => {
   const [{ selectMovies }, dispatch] = useReducer(
@@ -48,6 +62,10 @@ export const MovieProvider = ({ children }) => {
   const [{ moviesOrder }, dispatch1] = useReducer(
     MoviesReducer,
     INITIAL_MOVIE_ORDER_STATE
+  );
+  const [{ searchMoviesResult }, dispatch2] = useReducer(
+    MoviesReducer,
+    INITIAL_SEARCH_STATE
   );
   const setOrder = (moviesOrder) => {
     dispatch1({
@@ -61,25 +79,21 @@ export const MovieProvider = ({ children }) => {
       payload: selectMovies,
     });
   };
-  const value = { selectMovies, setSelectMovies, moviesOrder, setOrder };
+  const setSearchMoviesResult = (searchMoviesResult) => {
+    dispatch2({
+      type: MOVIES_SEARCH_ACTION_TYPE.SET_MOVIES_SEARCH,
+      payload: searchMoviesResult,
+    });
+  };
+  const value = {
+    selectMovies,
+    setSelectMovies,
+    moviesOrder,
+    setOrder,
+    setSearchMoviesResult,
+    searchMoviesResult,
+  };
   return (
     <MovieContext.Provider value={value}>{children}</MovieContext.Provider>
   );
 };
-// export const MovieOrderProvider = ({ children }) => {
-//   const [{ moviesOrder }, dispatch] = useReducer(
-//     MoviesReducer,
-//     INITIAL_MOVIE_ORDER_STATE
-//   );
-//   const setOrder = (order) => {
-//     dispatch({
-//       type: MOVIES_ORDERS_ACTION_TYPE.SET_CURRENT_MOVIES,
-//       payload: order
-//     });
-//   };
-
-//   const value = {  moviesOrder, setOrder };
-//   return (
-//     <MovieContext.Provider value={value}>{children}</MovieContext.Provider>
-//   );
-// };

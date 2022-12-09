@@ -3,30 +3,17 @@
     width: 100%;
     padding: 1.5rem;
     /* border: 2px solid orange; */
+    position: relative;
+    justify-content: center;
     
 
 }
-.aside__icons__conatainer{
-    display: flex;
-    flex-direction: column;
+
+.home__filter__container{
+    position: sticky;
+    z-index: 100;
+    width: 100%;
+    background: gray;
+    padding: 1rem 4rem;
+    top: 0;
 }
-.aside__text__conatainer{
-    width: 15em;
-    display: flex;
-    flex-direction: column;
-}
-.aside__container{
-    display: flex;
-    border: 2px solid yellow;
-    gap: 1rem;
-}
-.aside__icon{
-    display: flex;
-}
-.aside__icon:hover{
-    background: var(--gray);
-}
-.aside__icon img{
-  width: 1.5em;
-  
-} 

@@ -14,99 +14,72 @@ import Searchbox from "../Searchbox/Searchbox";
 function MovieCard() {
   // const vidoeData = async () => await fetch(  "TXXX_DATA.json");
   const [movieItem, setMovieItem] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  // const { selectMovies, moviesOrder } = useContext(MovieContext);
+  const [isLoading, setIsLoading] = useState(false)
   const [page, setPage] = useState(1);
   const [searchResult, setSearchResult] = useState();
   const [sortValue, setSortValue] = useState(" ");
   const moviesPerPage = 30;
   const pagesVisited = page * moviesPerPage;
 
-  useEffect(() => {
-    // loadMovieData();
+const loadMoviesData = async () => {
+  fetch(`http://localhost:5000/videos`)
+    .then((res) => res.json())
+    .then((data) => {
+      setIsLoading(true);
+      setMovieItem(data);
+      setIsLoading(false);
+    })
+    
+};
 
-    getMovies()
-      .then((data) => {
-        setMovieItem(data);
-        return data;
-      })
-      .then((data) => {
-        setSearchResult(data);
-      });
-  }, []);
+useEffect(() => {
+  loadMoviesData();
+}, []);
 
-  const loadMovieData = async () => {
-    return await axios
-      .get(
-        "https://hdzog.com/admin/feeds/promo/?categories=lesbian&only_hd=on&feed_format=csv&screenshot_format=source&limit=90000&csv_separator=%7C"
-      )
-      .then((response) => setMovieItem(response.data))
-      .catch((err) => console.log(err));
-  };
-  console.log(movieItem);
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    // return await axios
-    //   .get(`http://localhost:5000/videos?q=${searchMovies}`)
-    //   .then((response) => {
-    //     setMovieItem(response.data);
-    //     setSearchMovies("");
 
-    // })
-    // .catch((err) => console.log(err));
-  };
+  
+const pageCount = Math.ceil(movieItem.length / 30);
+console.log(searchResult);
+  
+const displayMovies =
+ movieItem && movieItem
+    .slice(pagesVisited, pagesVisited + moviesPerPage)
+    .map((movies) => (
+      <Movies {...movies} setSearchResult={setSearchResult} key={movies.id} />
+    ));
 
-  const handleSort = async (e) => {
-    // let value = e.target.value;
-    // setSortValue(value);
-    // return await axios
-    //   .get(`http://localhost:5000/videos?_sort=${value}&_order=asc`)
-    //   .then((response) => {
-    //     setMovieItem(response.data);
-    //   })
-    //   .catch((err) => console.log(err));
-  };
-  const pageCount = Math.ceil(movieItem.length / 30);
+const pagesHandler = (e, k) => {
+  setPage(k);
+};
 
-  // const displayMovies =
-  //   movieItem.length > 0 &&
-  //   movieItem
-  //     .slice(pagesVisited, pagesVisited + moviesPerPage)
-  //     .map((movies) => (
-  //       <Movies {...movies} setSearchResult={setSearchResult} key={movies.id} />
-  //     ));
-
-  const pagesHandler = (e, k) => {
-    setPage(k);
-  };
-
-  const changePage = ({ selected }) => {
-    setPage(selected);
-  };
-  return (
-    <>
-      <div className="movie__container">
-        <div className="movie__display">
-          {/* {isLoading ? <CircularProgress color="secondary" /> : content} */}
-
-          {/* <Movies  key={ movieItem}  /> */}
-        </div>
-
-        <ReactPaginate
-          previousLabel={"Previous"}
-          nextLabel={"Next"}
-          pageCount={pageCount}
-          color="primary"
-          onPageChange={changePage}
-          containerClassName={"paginationContainer"}
-          previousClassName={"prevBtn"}
-          nextClassName={"nextBtn"}
-          disabledClassName={"paginationDisabled"}
-          activeClassName={"paginationActive"}
-        />
+const changePage = ({ selected }) => {
+  setPage(selected);
+  window.scroll(0, 200);
+};
+return (
+  <>
+    <div className="movie__container">
+      <Searchbox setSearchResult={setSearchResult} movieItem={movieItem} />
+      <div className="movie__display">
+        {isLoading ? <CircularProgress color="secondary" /> : displayMovies}
+        {/* <Movies key={movieItem} /> */}
       </div>
-    </>
-  );
+
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        color="primary"
+        onPageChange={changePage}
+        containerClassName={"paginationContainer"}
+        previousClassName={"prevBtn"}
+        nextClassName={"nextBtn"}
+        disabledClassName={"paginationDisabled"}
+        activeClassName={"paginationActive"}
+      />
+    </div>
+  </>
+);
   // }
 }
 

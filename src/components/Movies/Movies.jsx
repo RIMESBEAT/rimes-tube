@@ -1,14 +1,12 @@
 import React from "react";
-
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-
 import "./Movies.css";
-
 import { Box, Modal } from "@mui/material";
 import { BlurLinear } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 function Movies({
   embed_code,
@@ -21,8 +19,9 @@ function Movies({
   id,
   duration,
   publish_date,
+  movies,
 }) {
- let time = duration
+  let time = duration;
   const minutes = Math.floor(time / 60);
   const seconds = time - minutes * 60;
   const style = {
@@ -37,6 +36,11 @@ function Movies({
     p: 0,
   };
 
+  const navigate = useNavigate();
+
+  const openMovieHandler = () => {
+    navigate("/videos/:id");
+  };
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);

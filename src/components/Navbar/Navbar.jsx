@@ -9,42 +9,30 @@ import Searchbox from "../Searchbox/Searchbox";
 import ClearIcon from "@mui/icons-material/Clear";
 import MenuIcon from "@mui/icons-material/Menu";
 import {  InView, useInView, } from "react-intersection-observer";
+import VideoFilter from "../VideoFilter/VideoFilter";
 
-function Navbar() {
+function Navbar({
+  movieItem,
+  setSearchResult,
+  handleSearchChange,
+  searchResult,
+}) {
   const [navDropDown, setNavDropDown] = useState(false);
   const [navOpen, setNavOpen] = useState();
 
-  const TrackVisible = () => {
-    const { ref, entry } = useInView({ trackVisibility: true, delay: 100 });
-    console.log(ref)
-    return <div ref={ref}>{entry?.isVisible}</div>;
-  };
-  // const navBarHandler = () => {
-  //   setNavOpen(!navOpen);
-  // };
-  // const { selectMovies, setSelectMovies, moviesOrder, setOrder } =
-  //   useContext(MovieContext);
-  // const navDropDownHandler = () => {
-  //   setNavDropDown(!navDropDown);
-  // };
+  return (
+    <div>
+      <nav>
+        {/* <Searchbox
+          movieItem={movieItem}
+          searchResult={searchResult}
+          // handleSearchChange={handleSearchChange}
+        /> */}
 
-  // const movieOrderHandler = (e) => {
-  //   e.preventDefault();
-  //   setOrder(e.target.value);
-  // };
-  // const movieHandler = (e) => {
-  //   e.preventDefault();
-  //   setSelectMovies(e.target.value);
-  // };
-
-
-  // return (
-  //   <div>
-  //     <nav>
-  //       <InView>{TrackVisible}</InView>
-  //     </nav>
-  //   </div>
-  // );
+        {/* <VideoFilter /> */}
+      </nav>
+    </div>
+  );
 }
 
 export default Navbar;

@@ -4,3 +4,28 @@
     grid-gap: .5rem;
     width: 100%;
 }
+
+.paginationContainer{
+    display: flex;
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.prevBtn, .nextBtn{
+    border: 1px solid red;
+    padding: .5rem;
+    border-radius: 8px;
+
+}
+.paginationActive{
+    background-color: red;
+    padding: .4rem;
+}
+.paginationDisabled{
+    background-color: white;
+    padding: .4rem;
+    border-color: grey;
+    color: gray;
+}
